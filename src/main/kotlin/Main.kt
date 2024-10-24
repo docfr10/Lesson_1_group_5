@@ -1,5 +1,9 @@
 package org.example
 
+import org.example.classes.Car
+import org.example.classes.Direction
+import org.example.classes.Moto
+import org.example.classes.User
 import kotlin.math.pow
 
 fun main() {
@@ -190,4 +194,96 @@ fun main() {
     } catch (e: Exception) {
         println("Error $e")
     }
+
+    // ЗАНЯТИЕ 3
+    // Вызов функции
+    println("ФУНКЦИИ")
+    // Неявная передача параметра
+    greet("World!")
+    // Явная передача параметра
+    greet(name = "everyone!")
+    // Запись в переменную значения функции
+    val sum = sum(b = 10, a = 5)
+    println(sum)
+    // Вызов функции с таким же названием, но с другими типами данных
+    println(sum(13.4, 11.8))
+    // Вызов функции с параметром по умолчанию
+    println(pro(2, 2))
+    println(pro(5, 6))
+    // Замена параметра по умолчанию
+    println(pro(5, 6, 10))
+    // Лямба функция
+    val square = { number: Int -> number * number }
+    println(square(4))
+    // Вызов функции высшего порядка
+    val sumResult = operate(a = 4, b = 5, operation = { x, y -> x + y })
+    val proResult = operate(a = 4, b = 5) { x, y -> x * y }
+    println(sumResult)
+    println(proResult)
+    // ООП
+    println("ООП")
+    // Создание объекта класса car
+    val toyota = Car("Toyota", "Rav4")
+    val bmw = Car("BMW", "X5")
+    val nissan = Car("Nissan", "Tida")
+    // Изменение свойства класса Car
+    toyota.color = "Black"
+    // Обращение к свойствам класса Car
+    println("Машина бренда ${toyota.brand}, с названием ${toyota.name}, цвета ${toyota.color}")
+    println("Машина бренда ${bmw.brand}, с названием ${bmw.name}, цвета ${bmw.color}")
+    println("Машина бренда ${nissan.brand}, с названием ${nissan.name}, цвета ${nissan.color}")
+    // Создание объекта класса Moto
+    val moto = Moto("Honda", "Some name")
+    moto.name = "New name"
+    println("Мотоцикл бренда ${moto.brand}, с названием ${moto.name}")
+    // Изменение значения свойства с поздней инициализацией
+    toyota.camera = "Yes"
+    println(toyota.camera)
+    // Вызов метода класса Car
+    toyota.go()
+    bmw.go()
+    nissan.go()
+    // Работа с приватными свойствами
+    toyota.setWheels(wheels = 5)
+    println(toyota.getWheels())
+    // Обращение к свойствам и методам класса без создания объекта
+    println(Car.androidAuto)
+    Car.installAndroidAuto()
+    println(Car.androidAuto)
+    // Создание объекта дата класса
+    val user1 = User("John", 25)
+    val user2 = user1.copy(age = 30)
+    println(user1)
+    println(user2)
+    // Создание объекта перечисления
+    val direction = Direction.NORTH
+    println(direction)
+    // Вызов toString()
+    println(toyota.toString())
+    println(bmw.toString())
+    println(nissan.toString())
+}
+
+// Объявление функции c параметрами
+fun greet(name: String) {
+    println("Hello, $name!")
+}
+
+// Объявление функции с возвращаемым значением
+fun sum(a: Int, b: Int): Int {
+    println(a)
+    println(b)
+    return a + b
+}
+
+// Перегрузка функции
+// Однострочная функция
+fun sum(a: Double, b: Double): Double = a + b
+
+// Функция с параметром по умолчанию
+fun pro(a: Int, b: Int, c: Int = 4): Int = (a * b) - c
+
+// Функция высшего порядка
+fun operate(a: Int, b: Int, operation: (Int, Int) -> Int): Int {
+    return operation(a, b)
 }
