@@ -1,9 +1,6 @@
 package org.example
 
-import org.example.classes.Car
-import org.example.classes.Direction
-import org.example.classes.Moto
-import org.example.classes.User
+import org.example.classes.*
 import kotlin.math.pow
 
 fun main() {
@@ -262,6 +259,22 @@ fun main() {
     println(toyota.toString())
     println(bmw.toString())
     println(nissan.toString())
+
+    // ЗАНЯТИЕ 4
+    val person = Person()
+    person.address
+    val man = Man()
+    man.someFun()
+
+    val circle = Circle(5.0)
+    circle.describe()
+    val rectangle = Rectangle(4.0, 3.0)
+    rectangle.describe()
+
+    val button = Button()
+    button.click()
+    button.focus()
+    button.showOff()
 }
 
 // Объявление функции c параметрами
